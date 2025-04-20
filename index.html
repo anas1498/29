@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Soirée du 29</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #ff6ec4, #7873f5);
+      color: white;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    #countdown {
+      font-size: 2rem;
+      font-weight: bold;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 1rem 2rem;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+    }
+
+    a.button {
+      margin-top: 2rem;
+      display: inline-block;
+      background: white;
+      color: #7873f5;
+      padding: 1rem 2rem;
+      border-radius: 30px;
+      font-size: 1.2rem;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    a.button:hover {
+      background: #ffe0f0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>✨ Soirée du 29 ✨</h1>
+  <p>📍 Harensesteenweg 459, 1800 Vilvoorde</p>
+  <div id="countdown"></div>
+
+  <a class="button" href="https://pay.sumup.com/b2c/XUNEZEC3H0" target="_blank">Réserver ta place 🎟️</a>
+
+  <script>
+    const countdown = document.getElementById("countdown");
+    const eventDate = new Date("June 29, 2025 20:00:00").getTime();
+    const updateCountdown = () => {
+      const now = new Date().getTime();
+      const distance = eventDate - now;
+      if (distance < 0) {
+        countdown.innerHTML = "🎉 C'est la soirée ! 🎉";
+        return;
+      }
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      countdown.innerHTML = `${days}j ${hours}h ${minutes}m ${seconds}s`;
+    };
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
+
+</body>
+</html>
